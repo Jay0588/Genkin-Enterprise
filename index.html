@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +6,30 @@
     <meta name="description" content="Genkin Enterprises - Building Excellence Since 2015. Premium civil engineering and general building solutions.">
     <title>Genkin Enterprises | Premium Building Solutions</title>
     
-    <!-- Google Fonts: Inter & Playfair Display -->
+    <!-- Google Fonts: Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <!-- Preloader -->
+    <div id="loader" class="preloader" aria-hidden="true">
+        <div class="preloader__inner">
+            <span class="preloader__brand">GENKIN</span>
+            <span class="preloader__sub">ENTERPRISES</span>
+            <div class="preloader__bar"><div class="preloader__bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Navbar -->
     <nav id="navbar">
@@ -41,6 +55,9 @@
 
     <!-- Hero Section -->
     <section id="hero">
+        <!-- Slide counter -->
+        <div class="hero-counter"><span class="current">01</span> / <span class="total">04</span></div>
+
         <div class="hero-carousel">
             <!-- Slide 1 -->
             <div class="hero-slide active" style="background-image: url('GE Company Profile 2024/1.png');">
@@ -92,11 +109,17 @@
             </div>
         </div>
 
+        <!-- Hidden dots (kept for JS compatibility) -->
         <div class="carousel-nav">
             <button type="button" class="carousel-dot active" data-index="0" aria-label="Show slide 1" aria-pressed="true"></button>
             <button type="button" class="carousel-dot" data-index="1" aria-label="Show slide 2" aria-pressed="false"></button>
             <button type="button" class="carousel-dot" data-index="2" aria-label="Show slide 3" aria-pressed="false"></button>
             <button type="button" class="carousel-dot" data-index="3" aria-label="Show slide 4" aria-pressed="false"></button>
+        </div>
+
+        <!-- Progress bar navigation -->
+        <div class="carousel-progress">
+            <div class="carousel-progress-bar" id="carouselProgress"></div>
         </div>
 
         <div class="scroll-indicator">
@@ -161,7 +184,7 @@
                 <h2 class="city-main-title">KENYA YETU</h2>
                 <div class="city-text">
                     <p>Nairobi is one of the youngest cities in Africa which is still standing tall. Architects and planners agree that it is a "living heritage city" where the city planning system is still based on the ancient traditional principles. Nairobi is a booming city and it is one of the front runners to become the most powerful industrial city of Africa. The rate at which it is growing, the city is now witnessing a constant stream of investors from all over the world.</p>
-                    <p style="opacity: 0.9; margin-top: 3rem;">So, it's time that the world looks at Nairobi as a success story of growth.</p>
+                    <p>So, it's time that the world looks at Nairobi as a success story of growth.</p>
                 </div>
             </div>
         </div>
@@ -174,7 +197,7 @@
                 <div class="contact-header-hrg">
                     <span class="subtitle">Quick Inquiry</span>
                     <h2>Let's build<br>something <span>extraordinary</span></h2>
-                    <div class="v-divider" style="margin: 3rem 0;"></div>
+                    <div class="v-divider" style="margin: 2.5rem 0;"></div>
                     
                     <div class="contact-details-hrg">
                         <div class="detail-item">
@@ -215,7 +238,7 @@
                             <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
                             <label for="message">How can we help?</label>
                         </div>
-                        <button type="submit" class="btn btn-dark" style="width: 100%; margin-top: 3rem;">Open in Gmail</button>
+                        <button type="submit" class="btn btn-dark" style="width: 100%; margin-top: 2rem;">Open in Gmail</button>
                     </form>
                     <div id="form-message" role="status" aria-live="polite"></div>
                 </div>
@@ -249,7 +272,7 @@
                 <div class="logo">
                     <a href="index.html"><img src="0-removebg-preview.png" alt="Genkin Enterprises Logo" class="footer-logo"></a>
                 </div>
-                <p style="margin-top: 2rem;">Benchmarking the industry since 2015. We don't just build buildings but craft spaces inspired by global design language and grounded in practical execution.</p>
+                <p style="margin-top: 1.5rem;">Benchmarking the industry since 2015. We don't just build buildings but craft spaces inspired by global design language and grounded in practical execution.</p>
             </div>
             
             <div class="footer-col footer-links">
@@ -282,6 +305,11 @@
 
     <!-- Back to Top Button -->
     <a href="#" id="backToTop" aria-label="Back to top">&uarr;</a>
+
+    <!-- GSAP + ScrollTrigger + ScrollSmoother -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
